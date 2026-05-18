@@ -1,62 +1,53 @@
-![image](https://user-images.githubusercontent.com/40845824/121069742-3accdb00-c7a4-11eb-87d0-3dc47e433762.png)
+Capputeeno Store – Frontend E-commerce
 
+Aplicação web desenvolvida como solução para o desafio da Rocketseat, com foco na construção de uma experiência moderna de e-commerce utilizando as melhores práticas do ecossistema React.
 
-# 🚀 Front end challenge
+O projeto simula uma loja virtual completa, permitindo navegação por produtos, aplicação de filtros dinâmicos, visualização de detalhes e gerenciamento de carrinho de compras.
 
-Bem-vindo(a). Este é o desafio Front end!
+Principais Funcionalidades
+Carrinho de compras dinâmico
+Adição, remoção e atualização de quantidade de produtos
+Cálculo automático de subtotal, frete e total
+Busca e filtros avançados
+Filtro por categoria (camisetas, canecas, etc.)
+Ordenação por preço e popularidade
+Busca por nome do produto
+Página de produto
+Visualização detalhada
+Informações completas e CTA de compra
+Listagem com paginação
+Navegação entre páginas de produtos
+Performance otimizada na renderização
+Persistência de estado
+Uso de localStorage para manter o carrinho
+Arquitetura e Boas Práticas
 
-O objetivo deste desafio é avaliar suas habilidades de programação.
-Quando sua solução estiver pronta, basta responder o e-mail que recebeu com o link do seu repo aqui no Github!
-Em seguida, enviaremos o feedback e as instruções dos próximos passos!
+O projeto foi estruturado com foco em escalabilidade e organização, utilizando:
 
-Caso tenha alguma dúvida, nós estamos disponíveis no email *recrutamento@rocketseat.com.br*
-Bom desafio!
+Separação por camadas (components, hooks, contexts, types)
+Criação de hooks customizados (useFilter, useProducts, useLocalStorage)
+Gerenciamento de estado global com Context API
+Componentização reutilizável e desacoplada
+Tipagem com TypeScript
+Tecnologias Utilizadas
+React / Next.js (App Router)
+TypeScript
+Styled-components
+Context API
+Hooks personalizados
+REST API (simulada)
+Diferenciais do Projeto
+Estrutura próxima de projetos reais de produção
+Código modular e reutilizável
+Foco em experiência do usuário (UX)
+Implementação completa de fluxo de compra (frontend)
+Organização limpa e de fácil manutenção
+Aprendizados
 
-> ⚠️ **É importante que o seu repo esteja público, caso contrário não iremos conseguir avaliar sua resposta**
+Durante o desenvolvimento, foram aplicados conceitos importantes como:
 
-# 🧠 Contexto
-
-![Protótipo](https://storage.googleapis.com/xesque-dev/challenge-images/prototipo.png?42)
-
-O desafio será implementar um e-commerce para venda de canecas e camisetas que deverá ter as seguintes funcionalidades:
-- [ ] Catálogo de produtos com paginação
-- [ ] Filtragem produtos por categoria
-- [ ] Busca por nome do produto
-- [ ] Adicionar e remover produtos do carrinho
-- [ ] Finalizar compra
-
-## 📋 Instruções
-
-Chegou a hora de colocar a mão na massa!
-
-- Siga [esse protótipo](https://www.figma.com/file/rET9F2CeUEJdiVN7JRu993/E-commerce---capputeeno?node-id=680%3A6449)
-- Utilize Next.js e Typescript
-- Faça a estilização com styled-components
-- Utilize o local storage para gerenciar o carrinho
-- Por favor, inclua no README as instruções de instalação do projeto
-- Sinta-se livre para incluir quaisquer observações
-- Consuma nossa **API GraphQL** rodando o comando `yarn start` na pasta `api`
-
-## ✔️ Critérios de Avaliação
-
-Além dos requisitos levantados acima, iremos olhar para os seguintes critérios durante a correção do desafio:
-
-- Gerenciamento de estado
-- Componentização
-- Responsividade
-- Preocupação com usabilidade
-- Preocupação com acessibilidade
-- Testes e2e
-- Padrões de código
-- Padrão de commits (_Conventional_)
-
-## 😎 Seria legal
-- Fazer deploy na vercel ou em outro local de sua preferência e disponibilizar um link de visualização, se necessário utilize esse servidor para a API GraphQL:  https://rocketseat-frontend-challenge.herokuapp.com/
-- Testes unitários
-- Utilização de cache do Next.js
-
----
-
-_O desafio acima foi cuidadosamente construído para propósitos de avaliação apenas. Já possuimos uma funcionalidade similar na nossa plataforma._
-
-Made with 💜 at Rocketseat
+Gerenciamento de estado global no React
+Criação de filtros dinâmicos e performáticos
+Boas práticas de componentização
+Integração entre UI e lógica de negócio
+Persistência de dados no cliente
