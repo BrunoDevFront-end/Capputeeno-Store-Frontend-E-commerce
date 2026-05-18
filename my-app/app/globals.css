@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --border-radius: 12px;
+  --logo-color: #5d5d6d;
+  --bg-secondary: #f3f5f6;
+  --bg-primary: #f0f0f5;
+  --text-dark: #737380;
+  --delete-color: #de3838;
+  --orange-Low: #ffa585;
+  --text-dark-2: #41414d;
+  --shapes-dark: #09090a;
+  --shapes: #dce2e6;
+  --secondary-Text: #617480;
+  --border-color: #a8a8b3;
+  --success-color: #51b853;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}

@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "json-graphql-server db.js --p 3333"
+    "start": "json-graphql-server db.js --port 3333"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.99.0",
+    "axios": "^1.15.0",
     "faker": "^5.5.3",
     "json-graphql-server": "^2.2.3"
   }
