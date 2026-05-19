@@ -10,6 +10,7 @@ import ShoppingBagIcon from "@/components/icons/shopping-bag-icon";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ProductInCart } from "@/types/product";
 import { toast } from "sonner";
+import { useMemo } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -68,6 +69,7 @@ const Container = styled.div`
       }
     }
   }
+
   @media (min-width: ${(props) => props.theme.smallMobileBreakpoint}) {
     section {
       div {
@@ -118,6 +120,7 @@ const ProductInfo = styled.div`
 
   div {
     margin-top: 30px;
+
     h3 {
       text-transform: uppercase;
       color: var(--text-dark);
@@ -127,7 +130,6 @@ const ProductInfo = styled.div`
 
     p {
       font-size: 14px;
-
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -145,10 +147,8 @@ const ProductInfo = styled.div`
       font-size: 20px;
     }
 
-    div {
-      p {
-        font-size: 16px;
-      }
+    div p {
+      font-size: 16px;
     }
   }
 
@@ -163,17 +163,22 @@ const ProductInfo = styled.div`
 
 export default function Product() {
   const searchParams = useSearchParams();
+
+  // 🔥 proteção contra undefined no build
+  const id = useMemo(() => {
+    return searchParams.get("id");
+  }, [searchParams]);
+
   const { value, updateLocalStorage } = useLocalStorage<ProductInCart[]>(
     "cart-items",
     [],
   );
 
-  const id = searchParams.get("id") || "";
-
-  const { data } = useProduct(id);
+  // ⚠️ evita crash com id vazio
+  const { data } = useProduct(id ?? "");
 
   const handleAddToCart = () => {
-    if (!data) return;
+    if (!id || !data) return;
 
     const updatedCart = value.some((item) => item.id === id)
       ? value.map((item) =>
@@ -192,26 +197,48 @@ export default function Product() {
     toast.success("Item adicionado ao carrinho!");
   };
 
+  // 🔥 proteção de render (evita build quebrar)
+  if (!id) {
+    return (
+      <DefaultPageLayout>
+        <p style={{ padding: 20 }}>Produto inválido</p>
+      </DefaultPageLayout>
+    );
+  }
+
+  if (!data) {
+    return (
+      <DefaultPageLayout>
+        <p style={{ padding: 20 }}>Carregando produto...</p>
+      </DefaultPageLayout>
+    );
+  }
+
   return (
     <DefaultPageLayout>
       <Container>
         <BackBtn navigate="/" />
+
         <section>
-          <img src={data?.image_url} />
+          <img src={data.image_url} alt={data.name} />
+
           <div>
             <ProductInfo>
-              <span>{data?.category}</span>
-              <h2>{data?.name}</h2>
-              <span>{formatValue(data?.price_in_cents ?? 0)}</span>
+              <span>{data.category}</span>
+              <h2>{data.name}</h2>
+              <span>{formatValue(data.price_in_cents ?? 0)}</span>
+
               <p>
                 Frete de R$40,00 para todo o Brasil. Grátis para compras acima
-                de
+                de R$200,00
               </p>
+
               <div>
-                <h3>Decrição</h3>
-                <p>{data?.description}</p>
+                <h3>Descrição</h3>
+                <p>{data.description}</p>
               </div>
             </ProductInfo>
+
             <button onClick={handleAddToCart}>
               <ShoppingBagIcon />
               Adicionar ao carrinho
