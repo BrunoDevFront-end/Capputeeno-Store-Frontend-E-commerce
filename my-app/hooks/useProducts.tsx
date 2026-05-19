@@ -9,6 +9,7 @@ import { useDeferredValue } from "react";
 //conectando no link do server
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
 
+console.log("API_URL:", process.env.NEXT_PUBLIC_API_URL);
 // criando uma função fetcher que retorna uma requisição post para o link do server: tipado no formato de Products dentro de um array.
 const fetcher = (query: string): AxiosPromise<ProductsFetchResponse> => {
   return axios.post(API_URL, { query });
