@@ -9,6 +9,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.99.0",
     "axios": "^1.15.0",
+    "cors": "^2.8.6",
     "faker": "^5.5.3",
     "json-graphql-server": "^2.2.3"
   }
