@@ -1,13 +1,14 @@
 import { Suspense } from "react";
 import { DefaultPageLayout } from "@/components/defaultPageLayout";
 import ProductContent from "./ProductContent";
+import { ProductSkeletonCard } from "@/components/ProductSkeletonCard";
 
 export const fetchCache = "force-no-store";
 
 export default function ProductPage() {
   return (
     <DefaultPageLayout>
-      <Suspense fallback={<p style={{ padding: 20 }}>Carregando produto...</p>}>
+      <Suspense fallback={<ProductSkeletonCard />}>
         <ProductContent />
       </Suspense>
     </DefaultPageLayout>

@@ -3,7 +3,7 @@
 import { ProductsCard } from "./products-card";
 import styled from "styled-components";
 import { useProducts } from "@/hooks/useProducts";
-
+import { SkeletonCard } from "./SkeletonCard";
 const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 256px);
@@ -18,19 +18,21 @@ interface ProductsListProps {
 }
 
 export function ProductsList({ page }: ProductsListProps) {
-  const { data } = useProducts(page, 16);
+  const { data, isLoading } = useProducts(page, 16);
 
   return (
     <ListContainer>
-      {data?.map((product) => (
-        <ProductsCard
-          key={product.id}
-          title={product.name}
-          price={product.price_in_cents}
-          image={product.image_url}
-          id={product.id}
-        />
-      ))}
+      {isLoading
+        ? Array.from({ length: 16 }).map((_, i) => <SkeletonCard key={i} />)
+        : data?.map((product) => (
+            <ProductsCard
+              key={product.id}
+              title={product.name}
+              price={product.price_in_cents}
+              image={product.image_url}
+              id={product.id}
+            />
+          ))}
     </ListContainer>
   );
 }

@@ -10,6 +10,7 @@ import ShoppingBagIcon from "@/components/icons/shopping-bag-icon";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ProductInCart } from "@/types/product";
 import { toast } from "sonner";
+import { ProductSkeletonCard } from "@/components/ProductSkeletonCard";
 
 const Container = styled.div`
   display: flex;
@@ -189,7 +190,7 @@ export default function ProductContent() {
   }
 
   if (!data) {
-    return <p style={{ padding: 20 }}>Carregando produto...</p>;
+    return <ProductSkeletonCard />;
   }
 
   return (

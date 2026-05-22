@@ -24,7 +24,7 @@ export function useProducts(page = 0, perPage = 16) {
   const query = mountQuery(type, priority, page, perPage);
 
   // chama a função fetcher dando como parametro para alteração o queryKey(filtros): sempre que mudar ele reexecuta
-  const { data } = useQuery({
+  const { data, isFetching } = useQuery({
     queryFn: () => fetcher(query),
     queryKey: ["products", type, priority, page],
     staleTime: 1000 * 60 * 1,
@@ -39,5 +39,6 @@ export function useProducts(page = 0, perPage = 16) {
 
   return {
     data: filteredProducts,
+    isLoading: isFetching,
   };
 }
